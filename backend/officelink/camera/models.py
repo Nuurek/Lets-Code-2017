@@ -16,3 +16,17 @@ class Camera(models.Model):
         max_length=SERIAL_LENGTH,
         validators=[serial_validator]
     )
+
+
+class Room(models.Model):
+
+    name = models.CharField(
+        unique=True,
+        max_length=50,
+    )
+
+    camera = models.ForeignKey(
+        'Camera',
+        null=True,
+        on_delete=models.SET_NULL,
+    )
