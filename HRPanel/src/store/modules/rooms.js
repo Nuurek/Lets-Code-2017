@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const state = {
     rooms: [
         { piId: '123456789', roomName: 'Kuchnia', count: 4, max: 10},
@@ -10,7 +12,33 @@ const getters = {
     rooms: state => state.rooms
 }
 
+const actions = {
+    getRooms({ commit, state }) {
+        const rooms = [...state.rooms];
+        axios
+        .get('https://officelink.herokuapp.com/api/rooms/')
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+
+        // commit('');
+    },
+
+    addRoom({ commit, state }, room ) {
+
+    }
+}
+
+const mutations = {
+
+}
+
 export default {
     state,
-    getters
+    getters,
+    actions,
+    mutations
 }

@@ -1,5 +1,6 @@
 .rooms__container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -30,9 +31,7 @@
     background-color: rgba(255,255,255,.9);
     transition: all .2s ease;
     &:hover {
-        background-color: white;
-        color: white;
-        background-color: var(--light-color);
+        background-color: #f9f9f9;
     }
 }
 
@@ -49,6 +48,53 @@
 .room__count {
     width: 30%;
     overflow: hidden;
+}
+
+.add_room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px 0 20px;
+    transition: all .2s ease;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-bottom: 20px;
+
+    // border: 1px solid transparent
+    & svg {
+        margin-right: 20px;
+    transition: all .2s ease;
+    
+    }
+
+    & p {
+        text-transform: uppercase;
+    }
+
+    &:hover {
+        background-color: var(--main-color);
+        color: white;
+
+        & svg {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.modal__add-room {
+    font-size: .75em !important;
+    
+    & input {
+        font-size: .75em !important;
+    }
+
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5em;
+}
+
+.add__room--header {
+    border-bottom: 1px solid #888;
 }
 
 
