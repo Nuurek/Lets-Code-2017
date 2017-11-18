@@ -1,0 +1,70 @@
+.rooms__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rooms__table {
+    width: 80vw;
+    border: 1px solid #eee;
+}
+
+.room__table--header, .room__table--row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // width: 80vw;
+    height: 30px;
+    padding: 5px;
+    border-bottom: 1px solid #dedede;
+    position: relative;
+}
+
+.room__table--header {
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+}
+
+.room__table--row {
+    background-color: rgba(255,255,255,.9);
+    transition: all .2s ease;
+    &:hover {
+        background-color: white;
+        color: white;
+        background-color: var(--light-color);
+    }
+}
+
+.room__id {
+    width: 20%;
+    overflow: hidden;
+}
+
+.room__name {
+    width: 50%;
+    overflow: hidden;
+}
+
+.room__count {
+    width: 30%;
+    overflow: hidden;
+}
+
+.v--modal-box{
+    padding: 40px;
+}
+
+@media (max-width: 900px) {
+    .room__id {
+        width: 0%;
+    }
+    
+    .room__name {
+        width: 80%;
+    }
+    
+    .room__count {
+        width: 20%;
+    }
+}

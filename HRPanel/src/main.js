@@ -7,7 +7,12 @@ import store from './store'
 
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
+
+import 'animate.css/animate.min.css'
+import VModal from 'vue-js-modal'
+
 Vue.component('icon', Icon)
+Vue.use(VModal)
 
 Vue.config.productionTip = false
 

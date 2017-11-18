@@ -1,30 +1,21 @@
 <template>
     <div class="panel_container">
-        <div class="panel_infocard" @click="routeToRooms">
-            <info-card :frontType="'text'"
-      :frontTitle="panelInfocard.front.title"
-      :frontData="panelInfocard.front.message"
-      :backTitle="panelInfocard.back.title"
-      :backData="panelInfocard.back.message" />
+        <div class="panel_infocard animated fadeIn" @click="routeToRooms">
+            <infocard header="Rooms" content="Administration panel for rooms section" iconName="map-marker"></infocard>
         </div>
-        <div class="panel_infocard" @click="routeToSurvey">
-            <info-card :frontType="'text'"
-      :frontTitle="surveyInfocard.front.title"
-      :frontData="surveyInfocard.front.message"
-      :backTitle="surveyInfocard.back.title"
-      :backData="surveyInfocard.back.message" />
+        <div class="panel_infocard animated fadeIn" @click="routeToSurvey">
+            <infocard header="Surveys" content="Administration panel for survey section" iconName="file-text-o"></infocard>
         </div>
-        
     </div>
 </template>
 
 <script>
 import InfoCard from "vue-info-card";
-
+import Infocard from "@/components/Infocard/Infocard";
 export default {
   name: "panel",
   components: {
-    InfoCard
+    Infocard
   },
   data() {
     return {
@@ -43,25 +34,23 @@ export default {
       surveyInfocard: {
         front: {
           title: "Ankiety",
-          message:
-            "Panel zarządzania ankietyzacją jednostki ludzkiej."
+          message: "Panel zarządzania ankietyzacją jednostki ludzkiej."
         },
         back: {
           title: "Ankiety",
-          message:
-            "Panel zarządzania ankietyzacją jednostki ludzkiej."
+          message: "Panel zarządzania ankietyzacją jednostki ludzkiej."
         }
       }
     };
   },
   computed: {},
   methods: {
-      routeToRooms() {
-          this.$router.push({ path: 'rooms' })
-      },
-      routeToSurvey() {
-          this.$router.push({ path: 'survey'})
-      }
+    routeToRooms() {
+      this.$router.push({ path: "rooms" });
+    },
+    routeToSurvey() {
+      this.$router.push({ path: "survey" });
+    }
   }
 };
 </script>

@@ -10,3 +10,16 @@
     width: 40vw;
     cursor: pointer;
 }
+
+@media (max-width: 900px) {
+    .panel_container {
+        flex-direction: column;
+    }
+
+    .panel_infocard {
+        height: 30vh;
+        width: 80vw;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+}

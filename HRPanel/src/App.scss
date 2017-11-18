@@ -1,0 +1,82 @@
+:root {
+    --main-color-transparent: rgba(13, 83, 135, .8);
+    --main-color: rgb(13, 83, 135);
+    --light-color: #4d7fb7;
+    --dark-color: #002b5a;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    // overflow: hidden;
+    background: url('./assets/bc1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+  }
+  
+  main {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  header {
+    margin: 0;
+    height: 56px;
+    padding: 0 16px 0 24px;
+    background-color: white;
+    color: var(--main-color);
+    border-bottom: 1px solid var(--main-color);
+  }
+  
+  header span {
+    display: block;
+    position: relative;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: .02em;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding-top: 16px;
+  }
+  
+  .body_container{
+    padding: 20px;
+  }
+  
+  .nav_container {
+    display: flex;
+    flex-direction: row;
+  
+    & span {
+      margin: 0 10px 0 10px;
+    }
+  }
+
+  .header-logo {
+      text-decoration: none;
+      color: var(--main-color) !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & span {
+          padding: 0;
+      }
+  }
+
+  .bold-text {
+      font-weight: bold;
+  }
+
+  
+.v--modal-box{
+    padding: 40px;
+    font-size: 1.5em;
+}

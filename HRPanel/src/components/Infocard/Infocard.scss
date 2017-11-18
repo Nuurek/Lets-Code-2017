@@ -1,0 +1,66 @@
+.infocard__container {
+    height: 50vh;
+    background: var(--main-color-transparent);
+    position: relative;
+    color: white;
+    transition: all .1s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:hover {
+        transform: scale(1.1);
+        background: rgba(255,255,255,1);
+        color: var(--main-color);
+        border: 1px solid var(--dark-color);
+
+        & .infocard__header {
+            border-top: 5px solid var(--dark-color);
+        }
+
+        & .infocard__content{
+            border-top: 1px solid var(--dark-color);
+            width: 80%;
+        }
+    }
+}
+
+.infocard__header {
+    height: 20%;
+    text-transform: uppercase;
+    font-size: 2em;
+    border-top: 5px solid white;
+    transition: all .2s ease;
+    width: 100%;
+}
+
+.infocard__icon {
+    height: 60%;
+}
+
+.infocard__content {
+    border-top: 1px solid white;
+    height: 20%;
+    transition: all .2s ease;
+}
+
+.infocard__section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .infocard__container {
+        height: 30vh;
+    }
+
+    .infocard__header {
+        height: 20%;
+        font-size: 1.5em;
+    }
+
+    .infocard__content {
+        font-size: 0.75em;
+    }
+}

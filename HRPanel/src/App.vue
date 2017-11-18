@@ -1,8 +1,12 @@
 <template>
   <div id="app">
-    <header>
+    <header class="nav_container">
+      <router-link to="/" class="header-logo">
+      <span><icon name="briefcase"></icon></span>
       <span>OfficeLink</span>
+      </router-link>
     </header>
+    <!-- <quick-menu :menu-count='count' :icon-class='icons' :menu-url-list='list'></quick-menu>     -->
     <main class="body_container">
       <router-view></router-view>
     </main>
@@ -10,48 +14,22 @@
 </template>
 
 <script>
+import quickMenu from 'vue-quick-menu'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    quickMenu
+  },
+  data() {
+    return {
+      count: 4,
+      icons: [],
+      list: ['/panel', '234', '67567', '456']
+    }
+  }
 }
 </script>
 
-<style>
-body {
-  margin: 0;
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-main {
-  text-align: center;
-  margin-top: 40px;
-}
-
-header {
-  margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #35495E;
-  color: #ffffff;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
-}
-
-.body_container{
-  padding: 20px;
-}
+<style lang="scss">
+@import './App.scss';
 </style>
