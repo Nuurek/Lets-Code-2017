@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # 3rd party
     'rest_framework',
+    'rest_framework_mongoengine',
     'whitenoise.runserver_nostatic',
 
     # Custom
@@ -119,3 +120,5 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+CORS_ORIGIN_ALLOW_ALL = True
