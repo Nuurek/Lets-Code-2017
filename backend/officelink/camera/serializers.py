@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Room, Camera
+from .models import Room, Camera, Measurement
 
 
 class RoomSerializer(serializers.ModelSerializer):
@@ -15,3 +15,10 @@ class CameraSerializer(serializers.ModelSerializer):
     class Meta:
         model = Camera
         fields = ('serial_number',)
+
+
+class MeasurementSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Measurement
+        fields = ('value', 'camera')

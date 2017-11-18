@@ -1,7 +1,7 @@
 from rest_framework import viewsets, mixins
 
-from .models import Room, Camera
-from .serializers import RoomSerializer, CameraSerializer
+from .models import Room, Camera, Measurement
+from .serializers import RoomSerializer, CameraSerializer, MeasurementSerializer
 
 
 class RoomViewSet(viewsets.ModelViewSet):
@@ -22,3 +22,8 @@ class RoomViewSet(viewsets.ModelViewSet):
 class CameraViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     queryset = Camera.objects.all()
     serializer_class = CameraSerializer
+
+
+class MeasurementViewSet(viewsets.ModelViewSet):
+    queryset = Measurement.objects.all()
+    serializer_class = MeasurementSerializer
