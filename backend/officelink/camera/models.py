@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.validators import RegexValidator
-from mongoengine import Document, EmbeddedDocument, fields
 
 
 class Camera(models.Model):
@@ -13,7 +12,7 @@ class Camera(models.Model):
     )
 
     serial_number = models.CharField(
-        unique=True,
+        primary_key=True,
         max_length=SERIAL_LENGTH,
         validators=[serial_validator],
     )
@@ -24,9 +23,11 @@ class Camera(models.Model):
 
 class Room(models.Model):
 
+    MAX_NAME_LENGTH = 50
+
     name = models.CharField(
         unique=True,
-        max_length=50,
+        max_length=MAX_NAME_LENGTH,
     )
 
     camera = models.OneToOneField(
@@ -45,13 +46,3 @@ class Room(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Measurement(EmbeddedDocument):
-    timestamp = fields.DateTimeField
-    number_of_people = fields.IntField
-
-
-class MeasurementsBundle(Document):
-    id = fields.IntField
-    measurements = fields.ListField(fields.EmbeddedDocumentField(Measurement))
