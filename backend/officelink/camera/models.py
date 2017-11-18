@@ -25,12 +25,16 @@ class Room(models.Model):
         max_length=50,
     )
 
-    camera = models.ForeignKey(
+    camera = models.OneToOneField(
         'Camera',
         null=True,
         on_delete=models.SET_NULL,
     )
 
-    maximum_capacity = models.PositiveIntegerField()
+    maximum_capacity = models.PositiveIntegerField(
+        default=1
+    )
 
-    number_of_requests = models.PositiveIntegerField()
+    number_of_requests = models.PositiveIntegerField(
+        default=0
+    )
