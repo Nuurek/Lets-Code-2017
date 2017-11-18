@@ -7,8 +7,8 @@ class Camera(models.Model):
     SERIAL_LENGTH = 16
 
     serial_validator = RegexValidator(
-        r'^[0-9A-F]{16}$',
-        "Only " + str(SERIAL_LENGTH) + " length, hex values are allowed."
+        regex=r'^[0-9A-F]{16}$',
+        message="Only " + str(SERIAL_LENGTH) + " char length, hex values are allowed."
     )
 
     serial_number = models.CharField(
@@ -30,3 +30,7 @@ class Room(models.Model):
         null=True,
         on_delete=models.SET_NULL,
     )
+
+    maximum_capacity = models.PositiveIntegerField()
+
+    number_of_requests = models.PositiveIntegerField()
