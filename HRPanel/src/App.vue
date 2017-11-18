@@ -5,6 +5,8 @@
       <span><icon name="briefcase"></icon></span>
       <span>OfficeLink</span>
       </router-link>
+      <router-link to="/rooms" class="nav_elem">rooms</router-link>
+      <router-link to="/survey" class="nav_elem">surveys</router-link>
     </header>
     <!-- <quick-menu :menu-count='count' :icon-class='icons' :menu-url-list='list'></quick-menu>     -->
     <main class="body_container">
@@ -22,9 +24,6 @@ export default {
   },
   data() {
     return {
-      count: 4,
-      icons: [],
-      list: ['/panel', '234', '67567', '456']
     }
   }
 }

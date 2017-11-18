@@ -17,9 +17,9 @@
         <hr>
         <div class="modal__room_name">Registered for room: <span class="bold-text">{{ room.roomName }}</span></div>
         <hr>
-        <div class="room__room_count">There is (approximately) <span class="bold-text">{{ room.count }}</span> people in the room</div>
+        <div class="room__room_count">There is (approximately) <span class="bold-text">{{ room.count }}</span> people in the room.</div>
         <hr>
-        <span class="bold-text">{{ placesLeft }}</span>
+        <span class="bold-text">{{ placesLeft }}.</span>
       </modal>
   </div>
 </template>
@@ -46,7 +46,6 @@ export default {
   },
   methods: {
     show(room) {
-      debugger;
       this.room = room;
       this.$modal.show("hello-world");
     },
