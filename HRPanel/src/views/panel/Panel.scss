@@ -1,0 +1,12 @@
+.panel_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.panel_infocard {
+    height: auto;
+    width: 40vw;
+    cursor: pointer;
+}
