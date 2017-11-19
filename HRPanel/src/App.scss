@@ -109,6 +109,18 @@ p {
   background: var(--main-color);
 }
 
+.form-conatiner {
+  width: 50%;
+}
+
+.form-header {
+  margin-bottom: 20px;
+}
+
+.submit-survey {
+  margin-bottom: 30px;
+}
+
 @media (max-width: 900px) {
     .v--modal-box{
         font-size: 1em;
@@ -116,5 +128,9 @@ p {
 
     .header-logo, .nav_elem {
         padding: 0 10px 0 10px !important;
+    }
+
+    .form-conatiner {
+      width: 80%;
     }
 }

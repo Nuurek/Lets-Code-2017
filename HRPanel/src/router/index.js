@@ -34,7 +34,7 @@ export default new Router({
       component: Survey
     },
     {
-      path: '/survey/singele',
+      path: '/survey/single',
       name: 'SingleSurvey',
       component: SingleSurvey
     },

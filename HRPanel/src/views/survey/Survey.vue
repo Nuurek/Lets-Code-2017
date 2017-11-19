@@ -17,10 +17,16 @@ export default {
   },
   methods: {
     routeToSingleSurvey() {
-
+      const scope = this;
+      setTimeout(function() {
+        scope.$router.push({ path: "survey/single" });
+      }, 500);
     },
     routeToManySurvey() {
-
+      const scope = this;
+      setTimeout(function() {
+        scope.$router.push({ path: "survey/group" });
+      }, 500);
     }
   }
 };

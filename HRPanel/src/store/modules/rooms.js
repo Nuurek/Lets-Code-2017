@@ -1,15 +1,20 @@
 import axios from 'axios'
+import { error } from 'util';
 
 const state = {
     rooms: [
         { piId: '123456789', roomName: 'Kuchnia', count: 4, max: 10 },
         { piId: '223456789', roomName: 'Toaleta Męska', count: 7, max: 10 },
         { piId: '323456789', roomName: 'Toaleta Damska', count: 3, max: 10 }
+    ],
+    users: [
+        { username: 'hr_master'}
     ]
 }
 
 const getters = {
-    rooms: state => state.rooms
+    rooms: state => state.rooms,
+    users: state => state.users
 }
 
 const actions = {
@@ -28,7 +33,6 @@ const actions = {
     },
 
     addRoom({ commit, state }, room) {
-        debugger;
         axios
             .post('https://officelink.herokuapp.com/api/rooms/', {
                 "name": room.roomName,
@@ -41,11 +45,24 @@ const actions = {
             .catch(function (error) {
                 console.log(error);
             });
+    },
+
+    getUsers({ commit, state }) {
+        axios
+        .get('http://surveysbackendapp.azurewebsites.net/Users/Workers/')
+        .then((response) => {
+            commit('SET_GUESTS', response.data);
+        })
+        .catch((error) => {
+
+        })
     }
 }
 
 const mutations = {
-
+    SET_GUESTS(state, guests) {
+        Vue.set(state, 'users', guests);
+    }
 }
 
 export default {
