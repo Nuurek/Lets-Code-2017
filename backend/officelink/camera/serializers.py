@@ -7,6 +7,13 @@ class RoomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Room
+        fields = ('id', 'name', 'camera', 'current_capacity', 'maximum_capacity')
+
+
+class RoomPostSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Room
         fields = ('name', 'camera', 'maximum_capacity')
 
 
@@ -21,4 +28,4 @@ class MeasurementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Measurement
-        fields = ('value', 'timestamp')
+        fields = ('value', 'timestamp', 'camera')

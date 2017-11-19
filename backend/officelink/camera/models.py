@@ -40,6 +40,10 @@ class Room(models.Model):
         default=1,
     )
 
+    current_capacity = models.PositiveIntegerField(
+        default=0,
+    )
+
     number_of_requests = models.PositiveIntegerField(
         default=0,
     )
