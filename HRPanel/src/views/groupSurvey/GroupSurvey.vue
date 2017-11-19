@@ -13,6 +13,7 @@
             <v-text-field
                     name="input-1"
                     label="Text"
+                    v-model="text"
                     textarea
                 ></v-text-field>
             </v-card-text>
@@ -30,15 +31,31 @@
 export default {
   data() {
     return {
-      row: null
+      row: null,
+      text: ""
     };
   },
   methods: {
     submit() {
-      const scope = this;
-      setTimeout(function() {
-        scope.$router.push({ path: "" });
-      }, 500);
+      const survey = {
+        type: 0,
+        text: this.text
+      };
+      this.$store.dispatch("addGroupSurvey", survey).then(
+        response => {
+          this.$notify({
+            title: "Succes",
+            text: "You added new group survey!"
+          });
+        },
+        error => {
+          this.$notify({
+            title: "Error",
+            text: "Something went wrong!",
+            type: 'error'
+          });
+        }
+      );
     }
   },
   created() {

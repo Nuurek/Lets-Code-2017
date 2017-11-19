@@ -7,9 +7,7 @@ const state = {
         { piId: '223456789', roomName: 'WC_1', count: 7, max: 10 },
         { piId: '323456789', roomName: 'WC_2', count: 3, max: 10 }
     ],
-    users: [
-        { username: 'hr_master'}
-    ]
+    users: []
 }
 
 const getters = {
@@ -33,31 +31,66 @@ const actions = {
     },
 
     addRoom({ commit, state }, room) {
-        axios
-            .post('https://officelink.herokuapp.com/api/rooms/', {
-                "name": room.roomName,
-                "camera": room.deviceId,
-                "maximum_capacity": room.capacity
-            })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        return new Promise((resolve, reject) => {
+            axios
+                .post('https://officelink.herokuapp.com/api/rooms/', {
+                    "name": room.roomName,
+                    "camera": room.deviceId,
+                    "maximum_capacity": room.capacity
+                })
+                .then(function (response) {
+                    resolve(response);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+
     },
 
     getUsers({ commit, state }) {
-        debugger;
         axios
-        .get('http://surveysbackendapp.azurewebsites.net/Users/Workers/')
-        .then((response) => {
-            debugger;
-            commit('SET_GUESTS', response.data);
-        })
-        .catch((error) => {
+            .get('http://surveysbackendapp.azurewebsites.net/Users/Workers/')
+            .then((response) => {
+                commit('SET_GUESTS', response.data);
+            })
+            .catch((error) => {
 
-        })
+            })
+    },
+
+    addIndividualSurvey({ commit, state }, survey) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post('http://surveysbackendapp.azurewebsites.net/Surveys/CreateIndividual', {
+                    type: survey.type,
+                    text: survey.text,
+                    username: survey.username
+                })
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    },
+
+    addGroupSurvey({ commit, state }, survey) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post('http://surveysbackendapp.azurewebsites.net/Surveys/CreateGroup', {
+                    type: survey.type,
+                    text: survey.text
+                })
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+
     }
 }
 

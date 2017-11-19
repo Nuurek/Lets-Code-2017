@@ -15,6 +15,7 @@
                     name="input-1"
                     label="Text"
                     textarea
+                    v-model="text"
                 ></v-text-field>
             </v-card-text>
                 <v-btn
@@ -33,15 +34,22 @@ export default {
     return {
       e1: null,
       items: [{ text: "Binary" }, { text: "Score" }],
-      row: null
+      row: null,
+      text: ""
     };
   },
   methods: {
     submit() {
-      const scope = this;
-      setTimeout(function() {
-        scope.$router.push({ path: "" });
-      }, 500);
+      const survey = {
+        type: 0,
+        text: this.text,
+        username: "rjwaberski"
+      };
+      this.$store.dispatch("addIndividualSurvey", survey);
+    //   this.$notify({
+    //     title: "Important message",
+    //     text: "Hello user! This is a notification!"
+    //   });
     }
   },
   created() {
@@ -49,7 +57,6 @@ export default {
   },
   computed: {
     getUsers() {
-      debugger;
       return this.$store.getters.users;
     }
   }

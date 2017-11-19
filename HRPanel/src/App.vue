@@ -11,6 +11,7 @@
     <!-- <quick-menu :menu-count='count' :icon-class='icons' :menu-url-list='list'></quick-menu>     -->
     <main class="body_container">
       <router-view></router-view>
+      <notifications />
     </main>
   </div>
 </template>
