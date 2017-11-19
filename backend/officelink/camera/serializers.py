@@ -10,13 +10,6 @@ class RoomSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'camera', 'current_capacity', 'maximum_capacity')
 
 
-class RoomPostSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Room
-        fields = ('name', 'camera', 'maximum_capacity')
-
-
 class CameraSerializer(serializers.ModelSerializer):
 
     class Meta:

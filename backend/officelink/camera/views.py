@@ -1,26 +1,33 @@
-from rest_framework import viewsets, mixins, response, generics, views, status
-from django.shortcuts import get_object_or_404
+from rest_framework import viewsets, mixins, response, generics, status
 
 from .models import Room, Camera, Measurement
-from .serializers import RoomSerializer, CameraSerializer, MeasurementSerializer, RoomPostSerializer
+from .serializers import RoomSerializer, CameraSerializer, MeasurementSerializer
 
 
 class RoomViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
+    def retrieve(self, request, *args, **kwargs):
+        room = self.get_object()
+        room.number_of_requests += 1
+        room.save()
+        return super(RoomViewSet, self).retrieve(request, *args, **kwargs)
+
     def create(self, request, *args, **kwargs):
         return super(RoomViewSet, self).create(request, *args, **kwargs)
+
+
+class RoomHighestOccurrenceView(generics.ListAPIView):
+    serializer_class = RoomSerializer
+
+    def get_queryset(self):
+        return Room.objects.order_by('-number_of_requests')[:3]
 
 
 class CameraViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     queryset = Camera.objects.all()
     serializer_class = CameraSerializer
-
-
-class MeasurementViewSet(viewsets.ModelViewSet):
-    queryset = Measurement.objects.all()
-    serializer_class = MeasurementSerializer
 
 
 class MeasurementCreateView(mixins.CreateModelMixin, viewsets.GenericViewSet):
