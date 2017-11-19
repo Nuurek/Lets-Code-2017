@@ -21,4 +21,4 @@ class MeasurementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Measurement
-        fields = ('value', 'camera', 'timestamp')
+        fields = ('value', 'timestamp')

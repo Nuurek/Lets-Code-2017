@@ -52,4 +52,4 @@ class Measurement(models.Model):
 
     timestamp = models.DateTimeField(auto_now_add=True)
     value = models.PositiveIntegerField()
-    camera = models.ForeignKey('Camera')
+    # camera = models.ForeignKey('Camera')
