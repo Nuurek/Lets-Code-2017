@@ -3,9 +3,9 @@ import { error } from 'util';
 
 const state = {
     rooms: [
-        { piId: '123456789', roomName: 'Kuchnia', count: 4, max: 10 },
-        { piId: '223456789', roomName: 'Toaleta Męska', count: 7, max: 10 },
-        { piId: '323456789', roomName: 'Toaleta Damska', count: 3, max: 10 }
+        { piId: '123456789', roomName: 'Kitchen', count: 4, max: 10 },
+        { piId: '223456789', roomName: 'WC_1', count: 7, max: 10 },
+        { piId: '323456789', roomName: 'WC_2', count: 3, max: 10 }
     ],
     users: [
         { username: 'hr_master'}
@@ -48,9 +48,11 @@ const actions = {
     },
 
     getUsers({ commit, state }) {
+        debugger;
         axios
         .get('http://surveysbackendapp.azurewebsites.net/Users/Workers/')
         .then((response) => {
+            debugger;
             commit('SET_GUESTS', response.data);
         })
         .catch((error) => {

@@ -50,7 +50,7 @@ export default {
   computed: {
     getUsers() {
       debugger;
-      return this.$store.state.rooms.users;
+      return this.$store.getters.users;
     }
   }
 };

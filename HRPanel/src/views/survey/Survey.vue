@@ -1,10 +1,10 @@
 <template>
   <div class="survey_container">
       <div class="survey_infocard animated fadeIn" @click="routeToSingleSurvey">
-            <infocard header="Individual" content="Administration panel for rooms section" iconName="user"></infocard>
+            <infocard header="Individual" content="Individual survey section" iconName="user"></infocard>
         </div>
         <div class="survey_infocard animated fadeIn" @click="routeToManySurvey">
-            <infocard header="Group" content="Administration panel for survey section" iconName="users"></infocard>
+            <infocard header="Group" content="Group survey section" iconName="users"></infocard>
         </div>
   </div>
 </template>
