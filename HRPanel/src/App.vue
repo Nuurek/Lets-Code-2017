@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header class="nav_container">
-      <router-link to="/" class="header-logo">
+      <router-link to="/panel" class="header-logo">
       <span><icon name="briefcase"></icon></span>
       <span>OfficeLink</span>
       </router-link>

@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    line-height: 2em;
 }
 .rooms__table {
     width: 80vw;
@@ -30,6 +31,8 @@
 .room__table--row {
     background-color: rgba(255,255,255,.9);
     transition: all .2s ease;
+    height: 50px;
+    cursor: pointer;
     &:hover {
         background-color: #f9f9f9;
     }
@@ -56,14 +59,14 @@
     align-items: center;
     padding: 0 20px 0 20px;
     transition: all .2s ease;
-    font-size: 1.5em;
+    font-size: 1em;
     cursor: pointer;
     margin-bottom: 20px;
 
     // border: 1px solid transparent
     & svg {
         margin-right: 20px;
-    transition: all .2s ease;
+    // transition: all .2s ease;
     
     }
 
@@ -82,21 +85,30 @@
 }
 
 .modal__add-room {
-    font-size: .75em !important;
-    
-    & input {
-        font-size: .75em !important;
-    }
-
+    font-size: 1em !important;
+    position: relative;
     display: flex;
     flex-direction: column;
-    line-height: 1.5em;
+    line-height: 2em !important;
+
+    & span {
+        width: 50%;
+
+        & label {
+            margin-right: 20px;
+        }
+    }
 }
 
 .add__room--header {
-    border-bottom: 1px solid #888;
+    border-bottom: 1px solid #eee;
+    color: #888;
 }
 
+.btn-footer {
+    justify-content: flex-end;
+    display: flex;
+}
 
 @media (max-width: 900px) {
     .room__id {

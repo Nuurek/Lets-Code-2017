@@ -1,0 +1,25 @@
+.survey_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.survey_infocard {
+    height: auto;
+    width: 40vw;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .survey_container {
+        flex-direction: column;
+    }
+
+    .survey_infocard {
+        height: 30vh;
+        width: 80vw;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+}

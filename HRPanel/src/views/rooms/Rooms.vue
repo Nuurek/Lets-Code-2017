@@ -1,7 +1,7 @@
 <template>
   <div class="rooms__container">
-      <div class="add_room" @click="showAddRoom">
-        <icon name="plus" label="Add a room" scale="2"></icon>
+      <div class="add_room animated fadeInUp" @click="showAddRoom">
+        <icon name="plus" label="Add a room"></icon>
         <p>Add new monitoring device</p>
       </div>
       <div class="rooms__table animated fadeIn">
@@ -27,22 +27,38 @@
         <span class="bold-text">{{ placesLeft }}.</span>
       </modal>
 
-      <modal name="add-room" width="80%" >
+      <modal name="add-room" width="80%" height="auto">
         <div class="modal__add-room">
-          <div class="add__room--header">Add new room form</div>
-          <hr>
-          <span>
-          <label for="roomName">Room name: </label>
-          <input v-model="newRoom.roomName" placeholder="Kitchen" name="roomName">
-        </span>
-        <span>
-          <label for="deviceId">DeviceID: </label>
-          <input v-model="newRoom.deviceId" placeholder="1234567890ABCDEF" name="deviceId">
-        </span>
-        <span>
-          <label for="capacity">Capacity: </label>
-          <input v-model="newRoom.capacity" placeholder="edit me" type="number" min="0" max="20" name="capacity"> 
-        </span>
+        <v-text-field
+            label="Room"
+            v-model="newRoom.name"
+            :rules="nameRules"
+            required
+          ></v-text-field>
+          <v-text-field
+            label="Device ID"
+            v-model="newRoom.deviceId"
+            :rules="idRules"
+            :counter="16"
+            required
+          ></v-text-field>
+          <v-text-field
+            label="Capacity"
+            v-model="newRoom.capacity"
+            :rules="nameRules"
+            type="number"
+            min="0"
+            max="20"
+            required
+          ></v-text-field>
+
+          <div class="btn-footer">
+            <v-btn @click="submitForm"
+              :disabled="!checkIfValidForm">
+            submit
+          </v-btn>
+          <v-btn @click="hideAddRoom">cancel</v-btn>
+          </div>
         </div>
       </modal>
   </div>
@@ -61,7 +77,13 @@ export default {
         roomName: "",
         deviceId: "",
         capacity: 0
-      }
+      },
+
+      nameRules: [v => !!v || "Room name is required"],
+      idRules: [
+        v => !!v || "Device ID is required",
+        v => (v && v.length <= 16) || "Name must be less than 10 characters"
+      ]
     };
   },
 
@@ -91,9 +113,19 @@ export default {
     hideAddRoom() {
       this.$modal.hide("add-room");
     },
-    submitAddRoom() {
-      //  submit
-      this.hideAddRoom();
+    submitForm() {
+      //  submit if valid
+      if (this.checkIfValidForm()) {
+        this.$store.dispatch("addRoom", this.newRoom);
+        this.hideAddRoom();
+      }
+    },
+    checkIfValidForm() {
+      return (
+        this.newRoom.roomName != null &&
+        this.newRoom.deviceId != null &&
+        this.newRoom.capacity != null
+      );
     }
   },
 

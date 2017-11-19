@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import InfoCard from "vue-info-card";
 import Infocard from "@/components/Infocard/Infocard";
 export default {
   name: "panel",
@@ -18,38 +17,21 @@ export default {
     Infocard
   },
   data() {
-    return {
-      panelInfocard: {
-        front: {
-          title: "Pokoje",
-          message:
-            "Panel zarządzania przepływem jednostki ludzkiej w środowisku biznesowo-gastronomicznym."
-        },
-        back: {
-          title: "Pokoje",
-          message:
-            "Panel zarządzania przepływem jednostki ludzkiej w środowisku biznesowo-gastronomicznym."
-        }
-      },
-      surveyInfocard: {
-        front: {
-          title: "Ankiety",
-          message: "Panel zarządzania ankietyzacją jednostki ludzkiej."
-        },
-        back: {
-          title: "Ankiety",
-          message: "Panel zarządzania ankietyzacją jednostki ludzkiej."
-        }
-      }
-    };
+    return {};
   },
   computed: {},
   methods: {
     routeToRooms() {
-      this.$router.push({ path: "rooms" });
+      const scope = this;
+      setTimeout(function() {
+        scope.$router.push({ path: "rooms" });
+      }, 500);
     },
     routeToSurvey() {
-      this.$router.push({ path: "survey" });
+      const scope = this;
+      setTimeout(function() {
+        scope.$router.push({ path: "survey" });
+      }, 500);
     }
   }
 };

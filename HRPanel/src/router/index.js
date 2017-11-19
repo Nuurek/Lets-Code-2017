@@ -5,6 +5,9 @@ import Hello from '@/components/Hello'
 import Panel from '@/views/Panel/Panel'
 import Rooms from '@/views/Rooms/Rooms'
 import Survey from '@/views/Survey/Survey'
+import Login from '@/views/login/Login'
+import SingleSurvey from '@/views/singleSurvey/SingleSurvey'
+import GroupSurvey from '@/views/groupSurvey/GroupSurvey'
 
 Vue.use(Router)
 
@@ -12,8 +15,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'panel',
-      component: Panel
+      name: 'login',
+      component: Login
     },
     {
       path: '/panel',
@@ -29,6 +32,16 @@ export default new Router({
       path: '/survey',
       name: 'Survey',
       component: Survey
+    },
+    {
+      path: '/survey/singele',
+      name: 'SingleSurvey',
+      component: SingleSurvey
+    },
+        {
+      path: '/survey/group',
+      name: 'GroupSurvey',
+      component: GroupSurvey
     }
   ]
 })
