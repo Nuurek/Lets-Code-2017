@@ -40,16 +40,30 @@ export default {
   },
   methods: {
     submit() {
+      debugger;
       const survey = {
         type: 0,
         text: this.text,
         username: "rjwaberski"
       };
-      this.$store.dispatch("addIndividualSurvey", survey);
-    //   this.$notify({
-    //     title: "Important message",
-    //     text: "Hello user! This is a notification!"
-    //   });
+      this.$store
+      .dispatch("addIndividualSurvey", survey)
+      .then(response => {
+          this.$notify({
+            title: "Succes",
+            text: "You added new individual survey!"
+          });
+      }, error => {
+          this.$notify({
+            title: "Error",
+            text: "Something went wrong!",
+            type: 'error'
+          });
+      });
+      //   this.$notify({
+      //     title: "Important message",
+      //     text: "Hello user! This is a notification!"
+      //   });
     }
   },
   created() {
